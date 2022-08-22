@@ -1,0 +1,53 @@
+:root {
+  --primary-clr: #ffffff;
+  --button-clr: linear-gradient(180deg, #f2c94c 0%, #f2994a 100%);
+}
+
+/* Reset */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* min-height: 100vh; */
+  background-color: var(--button-clr) !important;
+  font-family: "Product Sans";
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Product Sans";
+  src: url(./css/font/ProductSans-Regular.ttf);
+}
+
+.active {
+  position: relative;
+  color: #f2994a;
+}
+
+.active-tab {
+  position: relative;
+}
+
+.active-tab:after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 13px;
+  background-color: #f2994a;
+  bottom: -5px;
+  border-radius: 10px;
+  left: -2px;
+}
+
+.container {
+  background-image: url("./Components/bg.png") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 85%;
+}
