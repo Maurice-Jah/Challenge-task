@@ -8,7 +8,7 @@ const Header = () => {
         fontSize="36px"
         lineHeight="50px"
         color="#4E598C"
-        marginTop="168px"
+        paddingTop="189px"
         mb="59px"
       >
         Complete your Purchase
@@ -21,10 +21,10 @@ const Header = () => {
         borderBottom="1px solid #000"
         mb="76px"
       >
-        <Text mr="95px" pb="27px">
+        <Text mr="95px" pb="27px" className=" active active-tab">
           Personal Info
         </Text>
-        <Text mr="130px" pb="27px" className=" active active-tab">
+        <Text mr="130px" pb="27px" >
           Billing Info
         </Text>
         <Text pb="27px">Confirm Payment</Text>

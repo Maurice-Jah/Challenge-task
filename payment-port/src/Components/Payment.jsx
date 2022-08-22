@@ -2,17 +2,15 @@ import React from "react";
 import Header from "./Header";
 import Buttons from "./Buttons";
 import { Box, Flex, Text } from "@chakra-ui/react";
+import { useNavigate, Link } from "react-router-dom";
 
 const Payment = () => {
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate("/purchased");
+  };
   return (
-    <Box
-      as="section"
-      pl="400px"
-      pr="336px"
-      backgroundImage="url('bg.svg')"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-    >
+    <Box as="section" pl="400px" pr="336px">
       <Header />
 
       <Box
@@ -90,7 +88,9 @@ const Payment = () => {
           </Text>
         </Flex>
       </Box>
-      <Buttons title="Pay" />
+      <Box onClick={handleSubmit}>
+        <Buttons title="Pay" />
+      </Box>
     </Box>
   );
 };

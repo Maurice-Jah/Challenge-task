@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
+import { useNavigate, Link } from "react-router-dom";
 import "../../src/index.css";
 import {
   Box,
@@ -15,15 +16,33 @@ import {
 } from "@chakra-ui/react";
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  const initialValue = {
+    name: "",
+    email: "",
+    address1: "",
+    address2: "",
+    lga: "",
+    select: "",
+  };
+
+  const [userData, showUserData] = useState(initialValue);
+
+  const handleChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    showUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    navigate("/paymentPort");
+  };
+
   return (
-    <Box
-      as="section"
-      pl="400px"
-      pr="336px"
-      backgroundImage="url('bg.svg')"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-    >
+    <Box as="section" pl="400px" pr="336px" className="container">
       <Header />
       {/* Form  */}
       <FormControl as="form" isRequired>
@@ -38,6 +57,9 @@ const Profile = () => {
         </FormLabel>
         <Input
           type="text"
+          name="name"
+          value={userData.name}
+          onChange={handleChange}
           placeholder="Opara Linus Ahmed"
           border="1px solid #4E598C"
           borderRadius="10px"
@@ -46,6 +68,7 @@ const Profile = () => {
           lineHeight="30px"
           color="#4F4F4F"
           mb="44px"
+          bg={"#fff"}
         />
         <FormLabel color="#000" fontSize="20px" lineHeight="30px" mb="11px">
           Email Address
@@ -61,6 +84,9 @@ const Profile = () => {
         </FormHelperText>
         <Input
           type="email"
+          name="email"
+          value={userData.email}
+          onChange={handleChange}
           placeholder="OparaLinusAhmed@devmail.com"
           border="1px solid #4E598C"
           borderRadius="10px"
@@ -69,6 +95,7 @@ const Profile = () => {
           lineHeight="30px"
           color="#4F4F4F"
           mb="60px"
+          bg={"#fff"}
         />
         <FormLabel
           color="#000"
@@ -81,6 +108,9 @@ const Profile = () => {
         </FormLabel>
         <Input
           type="text"
+          name="address1"
+          value={userData.address1}
+          onChange={handleChange}
           placeholder="Opara Linus Ahmed"
           border="1px solid #4E598C"
           borderRadius="10px"
@@ -89,6 +119,7 @@ const Profile = () => {
           lineHeight="30px"
           color="#4F4F4F"
           mb="49px"
+          bg={"#fff"}
         />
 
         <FormLabel
@@ -102,6 +133,9 @@ const Profile = () => {
         </FormLabel>
         <Input
           type="text"
+          name="address2"
+          value={userData.address2}
+          onChange={handleChange}
           placeholder="and here"
           border="1px solid #4E598C"
           borderRadius="10px"
@@ -110,6 +144,7 @@ const Profile = () => {
           lineHeight="30px"
           color="#4F4F4F"
           mb="66px"
+          bg={"#fff"}
         />
 
         <Flex alignItems={"center"} gap="33px" mb={"80px"}>
@@ -125,6 +160,9 @@ const Profile = () => {
             </FormLabel>
             <Input
               type="text"
+              name="lga"
+              value={userData.lga}
+              onChange={handleChange}
               placeholder="Surulere"
               border="1px solid #4E598C"
               borderRadius="10px"
@@ -133,6 +171,7 @@ const Profile = () => {
               lineHeight="30px"
               color="#4F4F4F"
               mb="66px"
+              bg={"#fff"}
             />
           </Box>
 
@@ -148,12 +187,17 @@ const Profile = () => {
             </FormLabel>
             <Select
               placeholder="Select State"
+              name="select"
+              value={userData.select}
+              onChange={handleChange}
               borderRadius="10px"
               h="64px"
               fontSize="20px"
               lineHeight="30px"
               color="#4F4F4F"
               mb="66px"
+              bg={"#fff"}
+              border="1px solid #4E598C"
             >
               <option>Lagos</option>
             </Select>
@@ -176,6 +220,7 @@ const Profile = () => {
           _hover={{
             background: "linear-gradient(180deg, #f2c94c 0%, #f2994a 100%)",
           }}
+          onClick={handleSubmit}
         >
           Next
         </Button>

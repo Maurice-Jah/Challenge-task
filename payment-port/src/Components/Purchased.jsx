@@ -1,8 +1,13 @@
 import React from "react";
 import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import checkmark from "../assets/checkmark.svg";
+import { useNavigate, Link } from "react-router-dom";
 
 const Purchased = () => {
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate("/");
+  };
   return (
     <Box
       as="section"
@@ -69,9 +74,16 @@ const Purchased = () => {
           Please check your email for details concerning this transaction
         </Text>
 
-        <a href="#" className="active" pl="150px" display="block" mt="38px">
+        <Box
+          href="#"
+          className="active"
+          pl="150px"
+          display="block"
+          mt="38px"
+          onClick={handleSubmit}
+        >
           Return Home
-        </a>
+        </Box>
       </Box>
     </Box>
   );
